@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { PDFDocument } from 'pdf-lib';
 
-export default function RifDocFinal() {
+export default function RifDoc() {
   const [files, setFiles] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -30,44 +30,43 @@ export default function RifDocFinal() {
       link.download = `RifDoc_Merged_${Date.now()}.pdf`;
       link.click();
     } catch (err) {
-      alert("Gagal menggabungkan PDF. Pastikan file tidak rusak.");
+      alert("Gagal memproses file.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div style={{ fontFamily: 'sans-serif', minHeight: '100vh', backgroundColor: '#fdfdfd', color: '#333' }}>
-      <nav style={{ background: '#fff', padding: '20px 50px', borderBottom: '1px solid #eee', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h1 style={{ margin: 0, color: '#e11d48', fontWeight: '900', letterSpacing: '-1px' }}>RIF<span style={{color: '#1e293b'}}>DOC</span></h1>
-        <div style={{ fontSize: '12px', fontWeight: 'bold', background: '#ffe4e6', color: '#e11d48', padding: '5px 12px', borderRadius: '15px' }}>PRO EDITION</div>
-      </nav>
+    <div style={{ fontFamily: 'sans-serif', minHeight: '100vh', backgroundColor: '#ffffff' }}>
+      <div style={{ background: '#000', color: '#fff', padding: '15px 50px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h2 style={{ margin: 0, letterSpacing: '-1px' }}>RIF<span style={{color: '#ff0000'}}>DOC</span></h2>
+        <small>v1.0 Ready</small>
+      </div>
 
-      <div style={{ maxWidth: '800px', margin: '60px auto', padding: '0 20px', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '42px', fontWeight: '800', marginBottom: '10px' }}>Gabungkan PDF Gratis</h2>
-        <p style={{ color: '#666', fontSize: '18px', marginBottom: '40px' }}>Solusi cepat olah dokumen tanpa limit ukuran file.</p>
+      <div style={{ maxWidth: '600px', margin: '80px auto', textAlign: 'center', padding: '0 20px' }}>
+        <h1 style={{ fontSize: '40px', marginBottom: '10px' }}>Merge PDF</h1>
+        <p style={{ color: '#666', marginBottom: '40px' }}>Pilih beberapa file PDF untuk digabungkan menjadi satu.</p>
 
-        <div style={{ border: '3px dashed #ddd', borderRadius: '24px', padding: '60px', backgroundColor: '#fff', cursor: 'pointer', position: 'relative' }}>
+        <div style={{ border: '2px dashed #ccc', padding: '40px', borderRadius: '12px', cursor: 'pointer', position: 'relative' }}>
           <input type="file" multiple accept=".pdf" onChange={handleFile} style={{ position: 'absolute', inset: 0, opacity: 0, cursor: 'pointer' }} />
-          <div style={{ fontSize: '50px' }}>📄</div>
-          <p style={{ fontWeight: '600', marginTop: '10px' }}>Pilih atau Tarik file PDF kamu ke sini</p>
+          <p style={{ margin: 0, fontWeight: 'bold' }}>+ Tambah File PDF</p>
         </div>
 
         {files.length > 0 && (
-          <div style={{ marginTop: '30px', textAlign: 'left', background: '#fff', borderRadius: '16px', border: '1px solid #eee', padding: '20px' }}>
-            <h4 style={{ margin: '0 0 15px 0' }}>File Terpilih ({files.length}):</h4>
+          <div style={{ marginTop: '30px', textAlign: 'left', border: '1px solid #eee', padding: '20px', borderRadius: '8px' }}>
+            <p style={{ fontWeight: 'bold' }}>File yang dipilih:</p>
             {files.map((f, i) => (
-              <div key={i} style={{ padding: '8px 0', borderBottom: '1px solid #fafafa', display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
+              <div key={i} style={{ padding: '5px 0', fontSize: '14px', borderBottom: '1px solid #f9f9f9', display: 'flex', justifyContent: 'space-between' }}>
                 <span>{f.name}</span>
-                <span style={{ color: 'red', cursor: 'pointer' }} onClick={() => setFiles(files.filter((_, idx) => idx !== i))}>Hapus</span>
+                <span onClick={() => setFiles(files.filter((_, idx) => idx !== i))} style={{color: 'red', cursor: 'pointer'}}>Hapus</span>
               </div>
             ))}
             <button 
               onClick={mergePdfs} 
               disabled={loading}
-              style={{ width: '100%', marginTop: '25px', padding: '18px', backgroundColor: '#e11d48', color: '#fff', border: 'none', borderRadius: '12px', fontWeight: 'bold', fontSize: '16px', cursor: 'pointer' }}
+              style={{ width: '100%', marginTop: '20px', padding: '15px', backgroundColor: '#ff0000', color: '#fff', border: 'none', borderRadius: '5px', fontWeight: 'bold', cursor: 'pointer' }}
             >
-              {loading ? "Sedang Menggabungkan..." : "GABUNGKAN PDF SEKARANG"}
+              {loading ? "PROSES..." : "GABUNGKAN SEKARANG"}
             </button>
           </div>
         )}
