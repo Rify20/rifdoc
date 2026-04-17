@@ -1,57 +1,81 @@
 <!DOCTYPE html>
-<html lang="id" class="light">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rifduc by RifDev</title>
+            <div class="tool-icon">🔁</div>
+            <h3>Word to PDF</h3>
+            <p>Ubah dokumen Word menjadi PDF cepat dan bersih.</p>
+            <button class="tool-btn">Gunakan</button>
+          </article>
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+          <article class="tool-card">
+            <div class="tool-icon">🖼️</div>
+            <h3>JPG to PDF</h3>
+            <p>Gabungkan gambar ke dalam format PDF profesional.</p>
+            <button class="tool-btn">Gunakan</button>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<link rel="stylesheet" href="style.css">
-</head>
+    <section class="why" id="why">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Kenapa Rifkdoc</span>
+          <h2>Desain lebih bersih, fokus, dan enak dipakai</h2>
+        </div>
 
-<body class="bg-gray-100 flex">
+        <div class="why-grid">
+          <div class="why-card">
+            <h3>Lebih simpel</h3>
+            <p>Fokus ke fungsi utama tanpa elemen yang bikin penuh dan melelahkan.</p>
+          </div>
+          <div class="why-card">
+            <h3>Lebih elegan</h3>
+            <p>Kombinasi warna biru-putih dengan layout modern dan lega.</p>
+          </div>
+          <div class="why-card">
+            <h3>Siap online</h3>
+            <p>Dibuat sebagai static site agar ringan, stabil, dan mudah di-deploy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- SIDEBAR -->
-<div class="w-64 bg-white shadow-lg h-screen p-5">
-  <h1 class="text-2xl font-bold text-blue-600 mb-6">Rifduc</h1>
+    <section class="faq" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">FAQ</span>
+          <h2>Pertanyaan umum</h2>
+        </div>
 
-  <ul class="space-y-3">
-    <li onclick="setTool('merge')" class="menu">Merge PDF</li>
-    <li onclick="setTool('split')" class="menu">Split PDF</li>
-    <li onclick="setTool('rotate')" class="menu">Rotate PDF</li>
-    <li onclick="setTool('extract')" class="menu">Extract Pages</li>
-  </ul>
+        <div class="faq-list">
+          <details>
+            <summary>Apakah Rifkdoc sudah bisa memproses PDF asli?</summary>
+            <p>Versi awal ini fokus ke UI/UX dan struktur website dulu agar stabil. Fitur pemrosesan file bisa ditambahkan di tahap berikutnya.</p>
+          </details>
 
-  <button onclick="toggleDark()" class="mt-10 bg-blue-500 text-white px-4 py-2 rounded-xl w-full">
-    🌙 Dark Mode
-  </button>
-</div>
+          <details>
+            <summary>Apakah bisa di-host gratis?</summary>
+            <p>Bisa. Versi static seperti ini sangat cocok untuk GitHub dan Vercel.</p>
+          </details>
 
-<!-- MAIN -->
-<div class="flex-1 flex flex-col items-center justify-center p-10">
+          <details>
+            <summary>Apakah harus pakai npm?</summary>
+            <p>Tidak. Project ini sengaja dibuat tanpa npm agar lebih sederhana.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<h2 id="tool-title" class="text-3xl font-bold mb-6 text-blue-600">Merge PDF</h2>
+  <footer class="footer">
+    <div class="container footer-wrap">
+      <div>
+        <h3>Rifkdoc</h3>
+        <p>Simple document tools for everyday work.</p>
+      </div>
+      <p>© 2026 Rifkdoc. All rights reserved.</p>
+    </div>
+  </footer>
 
-<div id="drop-area" class="w-96 border-2 border-dashed border-blue-300 p-10 text-center rounded-xl bg-white cursor-pointer">
-  Drag & Drop PDF
-  <input type="file" id="fileInput" multiple hidden>
-</div>
-
-<canvas id="preview" class="mt-5 rounded shadow"></canvas>
-
-<div class="w-96 bg-gray-200 h-2 mt-4 rounded">
-  <div id="progress" class="bg-blue-500 h-2 w-0 rounded"></div>
-</div>
-
-<button onclick="runTool()" class="mt-6 bg-blue-500 text-white px-6 py-2 rounded-xl">
-  Process
-</button>
-
-</div>
-
-<script src="app.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
