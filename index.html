@@ -1,691 +1,218 @@
-:root {
-  --bg: #f4f8ff;
-  --bg-soft: #edf4ff;
-  --surface: rgba(255, 255, 255, 0.82);
-  --surface-strong: #ffffff;
-  --line: rgba(18, 92, 255, 0.12);
-  --line-strong: rgba(18, 92, 255, 0.2);
-  --text: #0f1f3a;
-  --muted: #5f708d;
-  --blue: #1662ff;
-  --blue-deep: #0f49c7;
-  --blue-soft: #dce8ff;
-  --shadow: 0 18px 45px rgba(17, 79, 224, 0.08);
-  --radius-xl: 30px;
-  --radius-lg: 22px;
-  --radius-md: 16px;
-  --radius-sm: 12px;
-  --container: 1180px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  color: var(--text);
-  background:
-    radial-gradient(circle at top left, rgba(66, 142, 255, 0.18), transparent 30%),
-    radial-gradient(circle at top right, rgba(18, 98, 255, 0.12), transparent 24%),
-    linear-gradient(180deg, #f8fbff 0%, #f1f6ff 100%);
-}
-
-button,
-input,
-textarea,
-select {
-  font: inherit;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.container {
-  width: min(calc(100% - 32px), var(--container));
-  margin: 0 auto;
-}
-
-.site-shell {
-  min-height: 100vh;
-}
-
-.glass-card {
-  background: var(--surface);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
-}
-
-.topbar {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: rgba(255, 255, 255, 0.66);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(22, 98, 255, 0.08);
-}
-
-.topbar__inner {
-  min-height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
-
-.brand__mark {
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
-  border-radius: 14px;
-  background: linear-gradient(135deg, var(--blue), #68a3ff);
-  color: #fff;
-  box-shadow: 0 12px 28px rgba(22, 98, 255, 0.24);
-}
-
-.brand__text {
-  font-size: 1.08rem;
-}
-
-.nav {
-  display: flex;
-  gap: 24px;
-  color: var(--muted);
-  font-weight: 500;
-}
-
-.nav a:hover {
-  color: var(--blue);
-}
-
-.button {
-  border: 0;
-  border-radius: 999px;
-  min-height: 50px;
-  padding: 0 20px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-}
-
-.button:hover {
-  transform: translateY(-1px);
-}
-
-.button--sm {
-  min-height: 42px;
-  padding: 0 16px;
-}
-
-.button--primary {
-  color: #fff;
-  background: linear-gradient(135deg, var(--blue), #4d95ff);
-  box-shadow: 0 12px 24px rgba(22, 98, 255, 0.18);
-}
-
-.button--ghost {
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.86);
-  border: 1px solid var(--line-strong);
-}
-
-.hero {
-  padding: 56px 0 28px;
-}
-
-.hero__grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
-  gap: 28px;
-  align-items: center;
-}
-
-.eyebrow,
-.label {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--blue-deep);
-  background: var(--blue-soft);
-  border-radius: 999px;
-  padding: 8px 14px;
-  font-size: 0.86rem;
-  font-weight: 700;
-}
-
-.label {
-  padding: 6px 12px;
-  font-size: 0.74rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.hero__copy h1 {
-  margin: 18px 0 18px;
-  font-size: clamp(2.8rem, 5vw, 4.9rem);
-  line-height: 0.98;
-  letter-spacing: -0.05em;
-}
-
-.hero__copy h1 span {
-  color: var(--blue);
-}
-
-.hero__copy p {
-  max-width: 650px;
-  color: var(--muted);
-  font-size: 1.06rem;
-  line-height: 1.75;
-}
-
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin: 28px 0 28px;
-}
-
-.hero__meta {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-}
-
-.metric-card,
-.feature-card,
-.faq-shell,
-.workspace,
-.hero-card {
-  border-radius: var(--radius-xl);
-}
-
-.metric-card {
-  padding: 18px;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
-}
-
-.metric-card strong {
-  display: block;
-  font-size: 0.98rem;
-  margin-bottom: 6px;
-}
-
-.metric-card span {
-  color: var(--muted);
-  font-size: 0.92rem;
-}
-
-.hero__panel {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.hero-card {
-  width: 100%;
-  padding: 26px;
-}
-
-.hero-card__row {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.hero-card h2 {
-  margin: 8px 0 0;
-  font-size: 1.6rem;
-}
-
-.status-pill {
-  border-radius: 999px;
-  padding: 10px 14px;
-  background: #fff;
-  border: 1px solid var(--line-strong);
-  color: var(--muted);
-  font-size: 0.9rem;
-  font-weight: 700;
-}
-
-.status-pill.is-online {
-  color: #0b7c42;
-  background: rgba(29, 201, 118, 0.08);
-  border-color: rgba(29, 201, 118, 0.2);
-}
-
-.status-pill.is-offline {
-  color: #a53f3f;
-  background: rgba(245, 82, 82, 0.08);
-  border-color: rgba(245, 82, 82, 0.18);
-}
-
-.hero-card__stack {
-  display: grid;
-  gap: 12px;
-  margin: 22px 0;
-}
-
-.stack-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 18px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.65);
-}
-
-.stack-item span {
-  color: var(--muted);
-}
-
-.hero-card__note {
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-.tools-section,
-.features,
-.faq {
-  padding: 30px 0;
-}
-
-.section-head {
-  max-width: 780px;
-  margin: 0 auto 28px;
-  text-align: center;
-}
-
-.section-head--left {
-  margin-inline: 0;
-  text-align: left;
-}
-
-.section-head h2 {
-  margin: 16px 0 10px;
-  font-size: clamp(2rem, 3.4vw, 3rem);
-  letter-spacing: -0.04em;
-}
-
-.section-head p {
-  color: var(--muted);
-  line-height: 1.72;
-}
-
-.tool-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 14px;
-  margin-bottom: 20px;
-}
-
-.tool-card {
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.74);
-  box-shadow: var(--shadow);
-  border-radius: 22px;
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  text-align: left;
-  cursor: pointer;
-}
-
-.tool-card.is-active {
-  background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(232,241,255,0.95));
-  border-color: rgba(22, 98, 255, 0.24);
-  box-shadow: 0 16px 36px rgba(22, 98, 255, 0.12);
-}
-
-.tool-card__icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  background: var(--blue-soft);
-  color: var(--blue-deep);
-  font-weight: 800;
-}
-
-.tool-card strong {
-  font-size: 0.98rem;
-}
-
-.tool-card small {
-  color: var(--muted);
-  font-size: 0.86rem;
-}
-
-.workspace {
-  padding: 24px;
-}
-
-.workspace__head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-
-.workspace__head h3 {
-  margin: 8px 0 0;
-  font-size: 1.55rem;
-}
-
-.workspace__tip {
-  max-width: 340px;
-  color: var(--muted);
-  text-align: right;
-  line-height: 1.7;
-}
-
-.dropzone {
-  border: 1.5px dashed rgba(22, 98, 255, 0.32);
-  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(237,244,255,0.92));
-  border-radius: 28px;
-  min-height: 220px;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  gap: 8px;
-  padding: 24px;
-  cursor: pointer;
-  transition: transform 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
-}
-
-.dropzone:hover,
-.dropzone.is-dragover {
-  transform: translateY(-1px);
-  border-color: var(--blue);
-}
-
-.dropzone__icon {
-  width: 68px;
-  height: 68px;
-  border-radius: 22px;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(135deg, var(--blue), #67a7ff);
-  color: #fff;
-  font-size: 1.6rem;
-  box-shadow: 0 16px 28px rgba(22, 98, 255, 0.18);
-}
-
-.dropzone p {
-  color: var(--muted);
-  margin: 0;
-}
-
-.tool-panel {
-  display: grid;
-  gap: 12px;
-  margin-top: 18px;
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-
-.field {
-  display: grid;
-  gap: 8px;
-}
-
-.field label {
-  font-size: 0.92rem;
-  font-weight: 600;
-}
-
-.field input,
-.field select,
-.field textarea {
-  width: 100%;
-  min-height: 48px;
-  border-radius: 14px;
-  border: 1px solid var(--line-strong);
-  background: rgba(255, 255, 255, 0.95);
-  padding: 12px 14px;
-  color: var(--text);
-  outline: none;
-}
-
-.field textarea {
-  min-height: 92px;
-  resize: vertical;
-}
-
-.field__help {
-  color: var(--muted);
-  font-size: 0.85rem;
-}
-
-.file-list {
-  margin-top: 18px;
-  display: grid;
-  gap: 10px;
-}
-
-.file-item,
-.empty-state {
-  border-radius: 18px;
-  padding: 16px 18px;
-  background: rgba(255, 255, 255, 0.74);
-  border: 1px solid var(--line);
-}
-
-.file-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.file-item__meta {
-  display: grid;
-  gap: 4px;
-}
-
-.file-item__meta strong {
-  word-break: break-word;
-}
-
-.file-item__meta span {
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-.empty-state strong {
-  display: block;
-  margin-bottom: 6px;
-}
-
-.empty-state p,
-.result-text {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-.action-row {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 18px;
-}
-
-.result-text {
-  margin-top: 14px;
-  min-height: 24px;
-}
-
-.result-text.is-error {
-  color: #c14444;
-}
-
-.result-text.is-success {
-  color: #0b7c42;
-}
-
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-
-.feature-card {
-  padding: 24px;
-}
-
-.feature-card__kicker {
-  color: var(--blue);
-  font-size: 0.9rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-}
-
-.feature-card h3 {
-  margin: 14px 0 10px;
-  font-size: 1.2rem;
-}
-
-.feature-card p {
-  color: var(--muted);
-  line-height: 1.75;
-}
-
-.faq-shell {
-  padding: 26px;
-}
-
-.faq-list {
-  display: grid;
-  gap: 12px;
-}
-
-.faq-list details {
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 16px 18px;
-  background: rgba(255,255,255,0.7);
-}
-
-.faq-list summary {
-  cursor: pointer;
-  list-style: none;
-  font-weight: 700;
-}
-
-.faq-list summary::-webkit-details-marker {
-  display: none;
-}
-
-.faq-list p {
-  color: var(--muted);
-  margin: 12px 0 0;
-  line-height: 1.74;
-}
-
-@media (max-width: 1120px) {
-  .tool-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .hero__meta,
-  .feature-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 920px) {
-  .hero__grid,
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-
-  .hero__panel {
-    justify-content: stretch;
-  }
-
-  .workspace__head {
-    flex-direction: column;
-  }
-
-  .workspace__tip {
-    text-align: left;
-    max-width: none;
-  }
-}
-
-@media (max-width: 760px) {
-  .topbar__inner {
-    min-height: 72px;
-  }
-
-  .nav,
-  .topbar__inner > .button {
-    display: none;
-  }
-
-  .hero {
-    padding-top: 36px;
-  }
-
-  .tool-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .hero__copy h1 {
-    font-size: 2.6rem;
-  }
-
-  .workspace,
-  .faq-shell,
-  .hero-card {
-    padding: 18px;
-  }
-
-  .action-row {
-    flex-direction: column-reverse;
-  }
-
-  .action-row .button {
-    width: 100%;
-  }
-}
-
-@media (max-width: 520px) {
-  .tool-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .dropzone {
-    min-height: 190px;
-  }
-}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Rifkdoc — alat PDF online yang simpel, presisi, dan elegan." />
+  <title>Rifkdoc — Smart PDF Tools</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="container topbar__inner">
+        <a href="#home" class="brand" aria-label="Rifkdoc home">
+          <span class="brand__mark">R</span>
+          <span class="brand__text">Rifkdoc</span>
+        </a>
+
+        <nav class="nav" aria-label="Navigasi utama">
+          <a href="#tools">Tools</a>
+          <a href="#features">Keunggulan</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+
+        <button class="button button--primary button--sm" id="scrollToolsBtn">Coba sekarang</button>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="container hero__grid">
+          <div class="hero__copy">
+            <span class="eyebrow">Blue • White • Minimal</span>
+            <h1>PDF tools yang <span>lebih tenang</span>, lebih rapi, dan lebih presisi.</h1>
+            <p>
+              Rifkdoc dibuat untuk orang yang butuh alat dokumen online tanpa tampilan yang ramai.
+              Fokus ke langkah yang jelas, hasil yang bersih, dan pengalaman yang terasa premium.
+            </p>
+
+            <div class="hero__actions">
+              <button class="button button--primary" data-target-tool="merge">Merge PDF</button>
+              <button class="button button--ghost" data-target-tool="jpg">JPG to PDF</button>
+            </div>
+
+            <div class="hero__meta">
+              <div class="metric-card">
+                <strong>Tanpa npm</strong>
+                <span>Frontend static langsung deploy</span>
+              </div>
+              <div class="metric-card">
+                <strong>Client-side</strong>
+                <span>File diproses di browser untuk tool utama</span>
+              </div>
+              <div class="metric-card">
+                <strong>Siap scale</strong>
+                <span>Backend Cloudflare Worker untuk endpoint dasar</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero__panel">
+            <div class="hero-card glass-card">
+              <div class="hero-card__row">
+                <div>
+                  <p class="label">Status sistem</p>
+                  <h2>Rifkdoc Core</h2>
+                </div>
+                <span class="status-pill" id="apiStatus">checking…</span>
+              </div>
+              <div class="hero-card__stack">
+                <div class="stack-item">
+                  <span>Frontend</span>
+                  <strong>Vercel Static</strong>
+                </div>
+                <div class="stack-item">
+                  <span>Backend</span>
+                  <strong>Cloudflare Worker</strong>
+                </div>
+                <div class="stack-item">
+                  <span>Mode Proses</span>
+                  <strong>In-browser PDF tools</strong>
+                </div>
+              </div>
+              <p class="hero-card__note">
+                Untuk menghindari biaya server dan bottleneck, tool dasar diproses langsung di browser pengguna.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tools-section" id="tools">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Tools</span>
+            <h2>Pilih tool yang kamu butuhkan</h2>
+            <p>
+              Versi ini sudah punya beberapa fitur yang benar-benar jalan tanpa backend berat:
+              merge PDF, split PDF, extract pages, rotate PDF, dan JPG to PDF.
+            </p>
+          </div>
+
+          <div class="tool-grid" role="tablist" aria-label="Pilihan tool PDF">
+            <button class="tool-card is-active" data-tool="merge" role="tab" aria-selected="true">
+              <span class="tool-card__icon">⧉</span>
+              <strong>Merge PDF</strong>
+              <small>Gabungkan banyak PDF</small>
+            </button>
+            <button class="tool-card" data-tool="split" role="tab" aria-selected="false">
+              <span class="tool-card__icon">✂</span>
+              <strong>Split PDF</strong>
+              <small>Pisahkan berdasarkan range</small>
+            </button>
+            <button class="tool-card" data-tool="extract" role="tab" aria-selected="false">
+              <span class="tool-card__icon">◫</span>
+              <strong>Extract Pages</strong>
+              <small>Ambil halaman tertentu</small>
+            </button>
+            <button class="tool-card" data-tool="rotate" role="tab" aria-selected="false">
+              <span class="tool-card__icon">↻</span>
+              <strong>Rotate PDF</strong>
+              <small>Putar semua halaman</small>
+            </button>
+            <button class="tool-card" data-tool="jpg" role="tab" aria-selected="false">
+              <span class="tool-card__icon">🖼</span>
+              <strong>JPG to PDF</strong>
+              <small>Gambar jadi PDF rapi</small>
+            </button>
+          </div>
+
+          <div class="workspace glass-card">
+            <div class="workspace__head">
+              <div>
+                <p class="label">Workspace</p>
+                <h3 id="workspaceTitle">Merge PDF</h3>
+              </div>
+              <span class="workspace__tip" id="workspaceTip">Pilih beberapa file PDF lalu gabungkan.</span>
+            </div>
+
+            <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Pilih file untuk tool aktif">
+              <input id="fileInput" type="file" hidden />
+              <div class="dropzone__icon">＋</div>
+              <strong id="dropzoneTitle">Pilih file PDF</strong>
+              <p id="dropzoneDesc">Klik area ini atau drag & drop file ke sini.</p>
+            </div>
+
+            <div class="tool-panel" id="toolPanel"></div>
+
+            <div class="file-list" id="fileList" aria-live="polite">
+              <div class="empty-state">
+                <strong>Belum ada file</strong>
+                <p>Tambahkan file untuk mulai memproses dokumen.</p>
+              </div>
+            </div>
+
+            <div class="action-row">
+              <button class="button button--ghost" id="clearBtn">Reset</button>
+              <button class="button button--primary" id="runBtn">Proses file</button>
+            </div>
+
+            <p class="result-text" id="resultText"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="features" id="features">
+        <div class="container feature-grid">
+          <article class="feature-card glass-card">
+            <span class="feature-card__kicker">01</span>
+            <h3>Minimal tapi tidak kosong</h3>
+            <p>Whitespace luas, kontras bersih, dan hirarki visual yang halus supaya terasa premium, bukan template coding.</p>
+          </article>
+          <article class="feature-card glass-card">
+            <span class="feature-card__kicker">02</span>
+            <h3>Presisi untuk pekerjaan harian</h3>
+            <p>Fokus ke tool inti yang sering dipakai dan langkah proses yang jelas dari awal sampai download.</p>
+          </article>
+          <article class="feature-card glass-card">
+            <span class="feature-card__kicker">03</span>
+            <h3>Siap berkembang</h3>
+            <p>Frontend bisa tetap di Vercel, backend ringan di Cloudflare Worker, lalu nanti ditambah storage atau auth bila dibutuhkan.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="faq" id="faq">
+        <div class="container faq-shell glass-card">
+          <div class="section-head section-head--left">
+            <span class="eyebrow">FAQ</span>
+            <h2>Yang perlu kamu tahu</h2>
+          </div>
+
+          <div class="faq-list">
+            <details open>
+              <summary>Apakah semua fitur seperti iLovePDF sudah ada?</summary>
+              <p>Belum penuh. Versi ini fokus ke fitur inti yang bisa berjalan stabil tanpa biaya server besar: merge, split, extract, rotate, dan JPG to PDF.</p>
+            </details>
+            <details>
+              <summary>Kenapa tidak semua proses pakai backend?</summary>
+              <p>Karena processing PDF berat di server cepat makan kuota gratis. Untuk tahap awal, client-side jauh lebih hemat, cepat, dan privat.</p>
+            </details>
+            <details>
+              <summary>Backend gratis paling cocok apa?</summary>
+              <p>Cloudflare Workers cocok untuk endpoint ringan dengan kuota gratis harian yang besar, lalu frontend tetap nyaman di-deploy di Vercel.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
