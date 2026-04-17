@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id" class="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rifduc by RifDev</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-gray-100 flex">
+
+<!-- SIDEBAR -->
+<div class="w-64 bg-white shadow-lg h-screen p-5">
+  <h1 class="text-2xl font-bold text-blue-600 mb-6">Rifduc</h1>
+
+  <ul class="space-y-3">
+    <li onclick="setTool('merge')" class="menu">Merge PDF</li>
+    <li onclick="setTool('split')" class="menu">Split PDF</li>
+    <li onclick="setTool('rotate')" class="menu">Rotate PDF</li>
+    <li onclick="setTool('extract')" class="menu">Extract Pages</li>
+  </ul>
+
+  <button onclick="toggleDark()" class="mt-10 bg-blue-500 text-white px-4 py-2 rounded-xl w-full">
+    🌙 Dark Mode
+  </button>
+</div>
+
+<!-- MAIN -->
+<div class="flex-1 flex flex-col items-center justify-center p-10">
+
+<h2 id="tool-title" class="text-3xl font-bold mb-6 text-blue-600">Merge PDF</h2>
+
+<div id="drop-area" class="w-96 border-2 border-dashed border-blue-300 p-10 text-center rounded-xl bg-white cursor-pointer">
+  Drag & Drop PDF
+  <input type="file" id="fileInput" multiple hidden>
+</div>
+
+<canvas id="preview" class="mt-5 rounded shadow"></canvas>
+
+<div class="w-96 bg-gray-200 h-2 mt-4 rounded">
+  <div id="progress" class="bg-blue-500 h-2 w-0 rounded"></div>
+</div>
+
+<button onclick="runTool()" class="mt-6 bg-blue-500 text-white px-6 py-2 rounded-xl">
+  Process
+</button>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+body.dark {
+  background: #0f172a;
+  color: white;
+}
+
+.menu {
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.menu:hover {
+  background: #eff6ff;
+}
