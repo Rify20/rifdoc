@@ -1,0 +1,4 @@
+name = "rifkdoc-api"
+main = "worker.js"
+compatibility_date = "2026-04-17"
+workers_dev = true
