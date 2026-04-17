@@ -1,23 +1,18 @@
 "use client";
 import React, { useState } from 'react';
 import { PDFDocument } from 'pdf-lib';
-import { Upload, FileText, Download, Loader2, Trash2 } from 'lucide-react';
 
 export default function RifPDF() {
-  const [files, setFiles] = useState<File[]>([]);
+  const [files, setFiles] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFile = (e: any) => {
     if (e.target.files) {
       setFiles([...files, ...Array.from(e.target.files)]);
     }
   };
 
-  const removeFile = (index: number) => {
-    setFiles(files.filter((_, i) => i !== index));
-  };
-
-  const mergeAndDownload = async () => {
+  const mergePdfs = async () => {
     if (files.length === 0) return;
     setLoading(true);
     try {
@@ -30,68 +25,63 @@ export default function RifPDF() {
       }
       const pdfBytes = await mergedPdf.save();
       const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-      const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
-      link.href = url;
-      link.download = `RifPDF_Merged_${Date.now()}.pdf`;
+      link.href = URL.createObjectURL(blob);
+      link.download = `RifDoc_${Date.now()}.pdf`;
       link.click();
-    } catch (error) {
-      alert("Gagal memproses PDF. Pastikan file tidak diproteksi.");
+    } catch (err) {
+      alert("Error pas gabungin PDF. Coba file lain.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans">
-      {/* Header */}
-      <nav className="bg-white border-b p-4 flex justify-between items-center shadow-sm">
-        <h1 className="text-2xl font-black text-red-600 tracking-tighter">RIF<span className="text-slate-800">PDF</span></h1>
-        <p className="text-xs text-slate-500 font-medium bg-slate-100 px-2 py-1 rounded">No Limits Edition</p>
-      </nav>
+    <div style={{ fontFamily: 'sans-serif', minHeight: '100vh', backgroundColor: '#f8fafc', padding: '20px' }}>
+      {/* HEADER */}
+      <div style={{ background: '#fff', padding: '15px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderRadius: '12px', boxShadow: '0 2px 10px rgba(0,0,0,0.05)', marginBottom: '40px' }}>
+        <h1 style={{ color: '#e11d48', margin: 0, fontWeight: 900, fontSize: '24px' }}>RIF<span style={{ color: '#1e293b' }}>DOC</span></h1>
+        <span style={{ fontSize: '12px', background: '#f1f5f9', padding: '5px 10px', borderRadius: '20px', fontWeight: 'bold' }}>NO LIMITS</span>
+      </div>
 
-      <main className="max-w-4xl mx-auto py-12 px-6 text-center">
-        <h2 className="text-4xl font-bold text-slate-900 mb-4">Gabungkan PDF dengan Cepat</h2>
-        <p className="text-slate-600 mb-8 text-lg">Proses 100% di browser kamu. File tidak pernah menyentuh server kami (Aman & Tanpa Limit).</p>
+      {/* MAIN CONTENT */}
+      <div style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'center' }}>
+        <h2 style={{ fontSize: '32px', marginBottom: '10px', color: '#0f172a' }}>Merge PDF Gratis</h2>
+        <p style={{ color: '#64748b', marginBottom: '30px' }}>Gabungkan banyak file PDF jadi satu dalam hitungan detik.</p>
 
-        {/* Upload Zone */}
-        <div className="bg-white border-2 border-dashed border-slate-300 rounded-2xl p-12 mb-8 hover:border-red-400 transition-colors cursor-pointer relative">
+        {/* DROPZONE */}
+        <div style={{ border: '3px dashed #cbd5e1', padding: '50px', borderRadius: '20px', backgroundColor: '#fff', position: 'relative', transition: '0.3s' }}>
           <input 
             type="file" 
             multiple 
             accept=".pdf" 
-            onChange={handleFileChange}
-            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+            onChange={handleFile}
+            style={{ position: 'absolute', inset: 0, opacity: 0, cursor: 'pointer', width: '100%' }}
           />
-          <Upload className="mx-auto text-slate-400 mb-4" size={48} />
-          <p className="text-slate-600 font-semibold">Klik atau seret file PDF ke sini</p>
+          <div style={{ fontSize: '40px', marginBottom: '10px' }}>📂</div>
+          <p style={{ fontWeight: 'bold', color: '#334155' }}>Klik atau seret PDF ke sini</p>
         </div>
 
-        {/* File List */}
+        {/* LIST FILE */}
         {files.length > 0 && (
-          <div className="bg-white rounded-xl shadow-sm border p-4 mb-8">
-            {files.map((file, idx) => (
-              <div key={idx} className="flex items-center justify-between p-3 border-b last:border-0">
-                <div className="flex items-center gap-3">
-                  <FileText className="text-red-500" size={20} />
-                  <span className="text-sm font-medium text-slate-700 truncate max-w-[200px]">{file.name}</span>
-                </div>
-                <button onClick={() => removeFile(idx)} className="text-slate-400 hover:text-red-500 transition-colors">
-                  <Trash2 size={18} />
-                </button>
+          <div style={{ marginTop: '30px', background: '#fff', borderRadius: '15px', padding: '20px', textAlign: 'left', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }}>
+            {files.map((f, i) => (
+              <div key={i} style={{ padding: '10px 0', borderBottom: '1px solid #f1f5f9', fontSize: '14px', color: '#475569', display: 'flex', justifyContent: 'space-between' }}>
+                <span>📄 {f.name}</span>
+                <span style={{ color: '#ef4444', cursor: 'pointer' }} onClick={() => setFiles(files.filter((_, idx) => idx !== i))}>Hapus</span>
               </div>
             ))}
+            
             <button 
-              onClick={mergeAndDownload}
+              onClick={mergePdfs}
               disabled={loading}
-              className="w-full mt-6 bg-red-600 hover:bg-red-700 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-red-200 disabled:bg-slate-400"
+              style={{ width: '100%', marginTop: '20px', padding: '15px', backgroundColor: '#e11d48', color: '#fff', border: 'none', borderRadius: '10px', fontWeight: 'bold', cursor: 'pointer', fontSize: '16px' }}
             >
-              {loading ? <Loader2 className="animate-spin" /> : <Download size={20} />}
-              {loading ? "Memproses..." : `Gabungkan ${files.length} File`}
+              {loading ? "Sabar, lagi proses..." : `GABUNGKAN ${files.length} FILE`}
             </button>
           </div>
         )}
-      </main>
+      </div>
     </div>
   );
 }
