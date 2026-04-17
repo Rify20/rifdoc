@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'RifDoc - PDF Tools ',
+  title: 'RifDoc - PDF Tools Tanpa Limit',
   description: 'Gabungkan PDF dengan mudah dan cepat',
 }
 
@@ -10,7 +10,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body style={{ margin: 0, padding: 0 }}>{children}</body>
+      <body style={{ margin: 0, padding: 0 }}>
+        {children}
+      </body>
     </html>
   )
 }
