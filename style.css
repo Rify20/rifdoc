@@ -1,14 +1,70 @@
-body.dark {
-  background: #0f172a;
-  color: white;
-}
-
-.menu {
-  padding: 10px;
-  border-radius: 10px;
+:root {
   cursor: pointer;
+  font-weight: 700;
+  list-style: none;
 }
 
-.menu:hover {
-  background: #eff6ff;
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-list p {
+  color: var(--muted);
+  padding-top: 10px;
+}
+
+.footer {
+  padding: 36px 0 48px;
+}
+
+.footer-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.footer-wrap h3 {
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+@media (max-width: 980px) {
+  .hero-grid,
+  .tools-grid,
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .nav-menu {
+    display: none;
+  }
+
+  .hero {
+    padding-top: 36px;
+  }
+
+  .hero-copy h1 {
+    font-size: 2.4rem;
+  }
+
+  .upload-card,
+  .tool-card,
+  .why-card {
+    padding: 20px;
+  }
+
+  .dropzone {
+    min-height: 200px;
+  }
 }
